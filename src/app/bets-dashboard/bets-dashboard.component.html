@@ -1,0 +1,6 @@
+<button (click)="startPulling()">Start Pulling</button>
+<button (click)="stopPulling()">Stop Pulling</button>
+
+<ul>
+  <li *ngFor="let bet of bets">{{ bet | json }}</li>
+</ul>
