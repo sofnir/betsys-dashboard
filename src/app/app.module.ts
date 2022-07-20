@@ -9,33 +9,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { BetsDashboardComponent } from './bets-dashboard/bets-dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {
-  MatButtonModule,
-  MatTableModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatMenuModule,
-  MatPaginatorModule,
-} from '@angular/material';
 import { PullingButtonsComponent } from './pulling-buttons/pulling-buttons.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { MaterialsModule } from './materials/materials.module';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
-  declarations: [AppComponent, BetsDashboardComponent, PullingButtonsComponent, NavigationComponent],
+  declarations: [
+    AppComponent,
+    BetsDashboardComponent,
+    PullingButtonsComponent,
+    NavigationComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SocketIoModule.forRoot(config),
     HttpClientModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatTableModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
-    MatPaginatorModule,
+    MaterialsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
