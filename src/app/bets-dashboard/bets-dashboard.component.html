@@ -1,16 +1,74 @@
-<button (click)="startPulling()">Start Pulling</button>
-<button (click)="stopPulling()">Stop Pulling</button>
+<div class="tableContainer">
+  <h3>Bets</h3>
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="firstPlayerName">
+      <th mat-header-cell *matHeaderCellDef>1 Player</th>
+      <td mat-cell *matCellDef="let element">{{ element.teams[0].name }}</td>
+    </ng-container>
 
-<ul>
-  <li *ngFor="let bet of bets">{{ bet.draw }}</li>
-</ul>
+    <ng-container matColumnDef="secondPlayerName">
+      <th mat-header-cell *matHeaderCellDef>2 Player</th>
+      <td mat-cell *matCellDef="let element">{{ element.teams[1].name }}</td>
+    </ng-container>
 
-<h3>Raised Buttons</h3>
-<div class="example-button-row">
-  <button mat-raised-button>Basic</button>
-  <button mat-raised-button color="primary">Primary</button>
-  <button mat-raised-button color="accent">Accent</button>
-  <button mat-raised-button color="warn">Warn</button>
-  <button mat-raised-button disabled>Disabled</button>
-  <a mat-raised-button routerLink=".">Link</a>
+    <ng-container matColumnDef="firstPlayerWin">
+      <th mat-header-cell *matHeaderCellDef>1 Win</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.teams[0].winDisplayedColor }"
+      >
+        {{ element.teams[0].win | number: '1.2-2' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="secondPlayerWin">
+      <th mat-header-cell *matHeaderCellDef>2 Win</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.teams[1].winDisplayedColor }"
+      >
+        {{ element.teams[1].win | number: '1.2-2' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="draw">
+      <th mat-header-cell *matHeaderCellDef>Draw</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngStyle]="{ color: element.drawDisplayedColor }"
+      >
+        {{ element.draw | number: '1.2-2' }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[10, 20, 100]"
+    showFirstLastButtons
+  ></mat-paginator>
+
+  <div class="button-row">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="startPulling()"
+      [disabled]="isPulling"
+    >
+      Start Pulling
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="stopPulling()"
+      [disabled]="!isPulling"
+    >
+      Stop Pulling
+    </button>
+  </div>
 </div>

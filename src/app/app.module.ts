@@ -9,7 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BetsDashboardComponent } from './bets-dashboard/bets-dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatButtonModule, MatTableModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatMenuModule,
+  MatPaginatorModule,
+} from '@angular/material';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -23,6 +30,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     BrowserAnimationsModule,
     MatButtonModule,
     MatTableModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
