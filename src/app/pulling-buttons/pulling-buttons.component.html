@@ -1,0 +1,18 @@
+<div class="button-row">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="startPulling()"
+    [disabled]="isStartPullingButtonDisabled"
+  >
+    Start Pulling
+  </button>
+  <button
+    mat-raised-button
+    color="warn"
+    (click)="stopPulling()"
+    [disabled]="!isStartPullingButtonDisabled"
+  >
+    Stop Pulling
+  </button>
+</div>

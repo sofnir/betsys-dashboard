@@ -53,22 +53,5 @@
     showFirstLastButtons
   ></mat-paginator>
 
-  <div class="button-row">
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="startPulling()"
-      [disabled]="isPulling"
-    >
-      Start Pulling
-    </button>
-    <button
-      mat-raised-button
-      color="warn"
-      (click)="stopPulling()"
-      [disabled]="!isPulling"
-    >
-      Stop Pulling
-    </button>
-  </div>
+  <app-pulling-buttons></app-pulling-buttons>
 </div>

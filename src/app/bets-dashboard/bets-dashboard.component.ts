@@ -14,10 +14,6 @@ export class BetsDashboardComponent implements OnInit, OnDestroy {
 
   betsSub: Subscription;
   updatedBetsSub: Subscription;
-  startPullingSub: Subscription;
-  stopPullingSub: Subscription;
-
-  isPulling: boolean = false;
 
   displayedColumns: string[] = [
     'firstPlayerName',
@@ -45,7 +41,6 @@ export class BetsDashboardComponent implements OnInit, OnDestroy {
     this.updatedBetsSub = this.betsService
       .getBetUpdated()
       .subscribe((updatedBets) => {
-        this.isPulling = true;
         this.dataSource.data = this.dataSource.data.map((bet) => {
           const updatedBet = updatedBets.find(
             (updatedBet) => bet.id === updatedBet.id
@@ -83,19 +78,8 @@ export class BetsDashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  startPulling() {
-    this.startPullingSub = this.betsService.startPulling(5).subscribe();
-  }
-
-  stopPulling() {
-    this.isPulling = false;
-    this.stopPullingSub = this.betsService.stopPulling().subscribe();
-  }
-
   ngOnDestroy(): void {
     this.betsSub.unsubscribe();
     this.updatedBetsSub.unsubscribe();
-    this.startPullingSub.unsubscribe();
-    this.stopPullingSub.unsubscribe();
   }
 }

@@ -17,11 +17,12 @@ import {
   MatMenuModule,
   MatPaginatorModule,
 } from '@angular/material';
+import { PullingButtonsComponent } from './pulling-buttons/pulling-buttons.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
-  declarations: [AppComponent, BetsDashboardComponent],
+  declarations: [AppComponent, BetsDashboardComponent, PullingButtonsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
