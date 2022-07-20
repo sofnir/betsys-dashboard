@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/17216605/180005325-a78b709c-9c89-4295-b949-92d8932c6c69.png)
+
 # BetsysDashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.7.
